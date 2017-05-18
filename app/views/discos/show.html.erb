@@ -1,0 +1,93 @@
+<div class="panel panel-primary animated fadeInUp">
+  <div class="panel-heading">
+    <b><h2 align="center">File System Simulator</h2></b>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <%= simple_form_for :form, url: gravar_disco_usuario_disco_path(@disco.usuario, @disco), method: :put do |f|%>
+        <div class="col-md-2">
+          <%= f.input :tamanho_bloco, collection: 1..Disco::TAMANHO_DISCO, default: 1%>
+        </div>
+        <div class="col-md-2">
+          <%= f.input :tipo_bloco, collection: 'A'..'Z', default: 'A'%>
+        </div>
+        <div class="col-md-2" style="padding: 22px 0 0 0">
+          <%= button_tag(type: "submit", class: "btn btn-primary") do %>
+            <i class="glyphicon glyphicon-floppy-disk"></i> Gravar
+          <% end %>
+        </div>
+      <% end %>
+      <%= simple_form_for :form, url: deletar_bloco_usuario_disco_path(@disco.usuario, @disco), method: :put do |f|%>
+        <div class="col-md-2" style="padding: 22px 22px 0 0">
+          <% x =  @disco.dados.chars.uniq %>
+          <% x.delete('-') %>
+          <%= f.input :tipo_bloco, collection: x, label: false, include_blank: false %>
+        </div>
+        <div class="col-md-2" style="padding: 22px 0 0 0">
+          <%= button_tag(type: "submit", class: "btn btn-danger") do %>
+            <i class="glyphicon glyphicon-trash"></i> Deletar
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="row"  style="padding: 0 20px">
+      <% if notice.present? %>
+        <div class="panel panel-success">
+          <div class="panel-heading">
+          <h4 align="center"><b><%= notice %></b></h4>
+          </div>
+        </div>
+      <% end %>
+      <% if alert.present? %>
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <h4 align="center"><b><%= alert %></b></h4>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Blocos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for i in 0...@disco.dados.size%>
+              <tr style="border-right: 10px solid #<%= @disco.informacoes_disco.find_by(tipo: @disco.dados[i]).try(:cor_bloco) %>">
+                <td><%= i %></td>
+                <td><%= @disco.dados[i] if  !@disco.dados[i].eql?('-') %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Tipo Bloco</th>
+              <th>Posições</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @disco.informacoes_disco.each do |l| %>
+              <tr style="border-left: 10px solid #<%= l.cor_bloco %>">
+                <td><%= l.tipo %></td>
+                <td><%= l.descricao %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <h3><b>Disponível: </b><%= @disco.dados.count('-') %> bits</h3>
+      </div>
+    </div>
+    <div class="pull-right">
+      <%= link_to ' Restaurar', restaurar_disco_usuario_disco_path(@disco.usuario, @disco), class: 'glyphicon glyphicon-wrench btn btn-info', method: :put %>
+      <%= link_to ' Defragmentar', defragmentar_disco_usuario_disco_path(@disco.usuario, @disco), class: 'glyphicon glyphicon-check  btn btn-info', method: :put %>
+    </div>
+  </div>
+</div>

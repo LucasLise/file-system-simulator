@@ -7,8 +7,8 @@ class UsuariosController < ApplicationController
 
   def create
     respond_to do |format|
-      if Usuario.find_by(nome: params[:nome]).present?
-        @usuario = Usuario.find_by(nome: params[:nome])
+      if Usuario.find_by(nome: params[:usuario][:nome]).present?
+        @usuario = Usuario.find_by(nome: params[:usuario][:nome])
         format.html { redirect_to usuario_disco_path(@usuario, @usuario.disco), notice: 'Logado'}
       else
         @usuario = Usuario.new(usuario_params)

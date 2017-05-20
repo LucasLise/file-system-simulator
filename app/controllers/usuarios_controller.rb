@@ -9,15 +9,17 @@ class UsuariosController < ApplicationController
     respond_to do |format|
       if Usuario.find_by(nome: params[:usuario][:nome]).present?
         @usuario = Usuario.find_by(nome: params[:usuario][:nome])
-        format.html { redirect_to usuario_disco_path(@usuario, @usuario.disco), notice: 'Logado'}
+        session[:id_usuario] = @usuario.id
+        format.html { redirect_to disco_path(@usuario.disco), notice: 'Logado'}
       else
         @usuario = Usuario.new(usuario_params)
         if @usuario.save
+          session[:id_usuario] = @usuario.id
           @disco = Disco.new
           @disco.usuario = @usuario
           @disco.dados = '-' * Disco::TAMANHO_DISCO
           @disco.save
-          format.html { redirect_to usuario_disco_path(@usuario, @disco), notice: 'Logado'}
+          format.html { redirect_to disco_path(@disco), notice: 'Logado'}
         else
           format.html { render :new }
           format.json { render json: object.errors, status: :unprocessable_entity }

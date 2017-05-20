@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  resources :usuarios, only: [:new, :create] do
-    resources :discos, only: [:show] do
-      member do
-        put :deletar_bloco
-        put :restaurar_disco
-        put :defragmentar_disco
-        put :gravar_disco
-      end
+  resources :usuarios, only: [:new, :create]
+  resources :discos, only: [:show] do
+    member do
+      put :deletar_bloco
+      put :restaurar
+      put :defragmentar
+      put :gravar_bloco
     end
   end
 

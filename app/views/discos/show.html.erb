@@ -2,9 +2,7 @@
   <div class="panel-heading">
     <div class="row">
       <div class="col-md-1">
-        <h1>
-          <%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> Voltar'.html_safe, root_path, class: "btn btn-default" %>
-        </h1>
+        <h1><%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> Voltar'.html_safe, root_path, class: "btn btn-default" %></h1>
       </div>
       <div class="col-md-10" align="center">
         <h1><b>File System Simulator</b></h1>
@@ -13,7 +11,7 @@
   </div>
   <div class="panel-body">
     <div class="row">
-      <%= simple_form_for :form, url: gravar_disco_usuario_disco_path(@disco.usuario, @disco), method: :put do |f|%>
+      <%= simple_form_for :form, url: gravar_bloco_disco_path(@disco), method: :put do |f|%>
         <div class="col-md-2">
           <%= f.input :tamanho_bloco, collection: 1..Disco::TAMANHO_DISCO, default: 1%>
         </div>
@@ -26,7 +24,7 @@
           <% end %>
         </div>
       <% end %>
-      <%= simple_form_for :form, url: deletar_bloco_usuario_disco_path(@disco.usuario, @disco), method: :put do |f|%>
+      <%= simple_form_for :form, url: deletar_bloco_disco_path(@disco), method: :put do |f|%>
         <div class="col-md-2" style="padding: 22px 22px 0 0">
           <% x =  @disco.dados.chars.uniq %>
           <% x.delete('-') %>
@@ -95,8 +93,8 @@
       </div>
     </div>
     <div class="pull-right">
-      <%= link_to '<i class="glyphicon glyphicon-wrench"></i> Restaurar'.html_safe, restaurar_disco_usuario_disco_path(@disco.usuario, @disco), class: 'btn btn-info', method: :put %>
-      <%= link_to '<i class="glyphicon glyphicon-check"></i> Defragmentar'.html_safe, defragmentar_disco_usuario_disco_path(@disco.usuario, @disco), class: 'btn btn-info', method: :put %>
+      <%= link_to '<i class="glyphicon glyphicon-wrench"></i> Restaurar'.html_safe, restaurar_disco_path(@disco), class: 'btn btn-info', method: :put %>
+      <%= link_to '<i class="glyphicon glyphicon-check"></i> Defragmentar'.html_safe, defragmentar_disco_path(@disco), class: 'btn btn-info', method: :put %>
     </div>
   </div>
 </div>

@@ -1,0 +1,24 @@
+.center {
+  left: 50%;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 30%;
+}
+
+.btn {
+  color: #080000;
+  font-size: 15px;
+}
+
+.panel-danger > .panel-heading {
+    background-color: #ed5565;
+    border-color: #ed5565;
+    color: white;
+}
+
+.panel-success > .panel-heading {
+    background-color: #42c88a;
+    border-color: #42c88a;
+    color: white;
+}

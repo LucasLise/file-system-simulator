@@ -1,0 +1,18 @@
+<div class="center">
+  <div class="row">
+    <div class="col-md-12 btn-tipo-alocacao">
+      <%= link_to 'Alocação Contígua', disco_path(Usuario.find(session[:id_usuario]).disco), class: 'btn btn-default' %>
+    </div>
+    <div class="col-md-12 btn-tipo-alocacao">
+      <%= link_to 'Alocação Encadeada', discos_path, class: 'btn btn-default' %>
+    </div>
+    <div class="col-md-12 btn-tipo-alocacao">
+      <%= link_to 'Alocação Encadeada usando Índice', discos_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+  <div class="row btn-voltar" align="rigth">
+    <div class="col-md-3">
+      <h1><%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> Voltar'.html_safe, root_path, class: "btn btn-default" %></h1>
+    </div>
+  </div>
+</div>

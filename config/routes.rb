@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   resources :usuarios, only: [:new, :create]
-  resources :discos, only: [:show] do
+  resources :discos, only: [:show, :index] do
     member do
+      get :contigua
+      get :encadeada
+      get :encadeada_indice
       put :deletar_bloco
       put :restaurar
       put :defragmentar

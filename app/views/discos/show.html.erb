@@ -2,7 +2,7 @@
   <div class="panel-heading">
     <div class="row">
       <div class="col-md-1">
-        <h1><%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> Voltar'.html_safe, root_path, class: "btn btn-default" %></h1>
+        <h1><%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> Voltar'.html_safe, discos_path, class: "btn btn-default" %></h1>
       </div>
       <div class="col-md-10" align="center">
         <h1><b>File System Simulator</b></h1>
@@ -77,14 +77,16 @@
           <thead>
             <tr>
               <th>Tipo Bloco</th>
-              <th>Posições</th>
+              <th>Endereço Inicial</th>
+              <th>Tamanho</th>
             </tr>
           </thead>
           <tbody>
             <% @disco.informacoes_disco.each do |l| %>
               <tr style="border-left: 10px solid #<%= l.cor_bloco %>">
                 <td><%= l.tipo %></td>
-                <td><%= l.descricao %></td>
+                <td><%= @disco.dados.index l.tipo %></td>
+                <td><%= @disco.dados.count(l.tipo) %></td>
               </tr>
             <% end %>
           </tbody>

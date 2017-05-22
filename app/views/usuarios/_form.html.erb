@@ -1,9 +1,9 @@
 <%= simple_form_for @usuario do |f| %>
-  <div class="panel panel-default animated rollIn">
-    <div class="panel-body">
-      <%= f.input :nome, as: :password, class: 'sr-only', label: false, placeholder: 'Usuário'%>
-      <%= f.button :submit, 'Acessar', class: 'btn btn-md btn-primary btn-block' %>
-    </div>
+<div class="animated rollIn">
+  <div id="titulo-login" align="center">
+    <h1>Login</h1>
   </div>
+  <%= f.input :nome, as: :password, class: 'sr-only', label: false, placeholder: 'Usuário'%>
+  <%= f.button :submit, 'Acessar', class: 'btn btn-md btn-primary btn-block' %>
 </div>
 <% end %>

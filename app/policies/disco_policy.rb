@@ -1,5 +1,5 @@
 class DiscoPolicy < ApplicationPolicy
-  def show?
+  def contigua?
     possui_permissao?
   end
 

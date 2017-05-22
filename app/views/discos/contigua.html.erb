@@ -2,10 +2,10 @@
   <div class="panel-heading">
     <div class="row">
       <div class="col-md-1">
-        <h1><%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> Voltar'.html_safe, discos_path, class: "btn btn-default" %></h1>
+        <h1><%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> Voltar'.html_safe, discos_path, class: "btn btn-default", id: 'btn-voltar-panel' %></h1>
       </div>
       <div class="col-md-10" align="center">
-        <h1><b>File System Simulator</b></h1>
+        <h1><b>Alocação Contígua</b></h1>
       </div>
     </div>
   </div>
@@ -16,7 +16,7 @@
           <%= f.input :tamanho_bloco, collection: 1..Disco::TAMANHO_DISCO, default: 1%>
         </div>
         <div class="col-md-2">
-          <%= f.input :tipo_bloco, collection: 'A'..'Z', default: 'A'%>
+          <%= f.input :tipo_bloco, collection: para_adicionar, default: 'A'%>
         </div>
         <div class="col-md-2" style="padding: 22px 0 0 0">
           <%= button_tag(type: "submit", class: "btn btn-primary") do %>
@@ -24,17 +24,17 @@
           <% end %>
         </div>
       <% end %>
-      <%= simple_form_for :form, url: deletar_bloco_disco_path(@disco), method: :put do |f|%>
-        <div class="col-md-2" style="padding: 22px 22px 0 0">
-          <% x =  @disco.dados.chars.uniq %>
-          <% x.delete('-') %>
-          <%= f.input :tipo_bloco, collection: x, label: false, include_blank: false %>
-        </div>
-        <div class="col-md-2" style="padding: 22px 0 0 0">
-          <%= button_tag(type: "submit", class: "btn btn-danger") do %>
-            <i class="glyphicon glyphicon-trash"></i> Deletar
-          <% end %>
-        </div>
+      <% if disco_possui_dados? %>
+        <%= simple_form_for :form, url: deletar_bloco_disco_path(@disco), method: :put do |f|%>
+          <div class="col-md-2" style="padding: 22px 22px 0 0">
+            <%= f.input :tipo_bloco, collection: para_deletar, label: false, include_blank: false %>
+          </div>
+          <div class="col-md-2" style="padding: 22px 0 0 0">
+            <%= button_tag(type: "submit", class: "btn btn-danger") do %>
+              <i class="glyphicon glyphicon-trash"></i> Deletar
+            <% end %>
+          </div>
+        <% end %>
       <% end %>
     </div>
     <div class="row"  style="padding: 0 20px">
@@ -91,7 +91,9 @@
             <% end %>
           </tbody>
         </table>
-        <h3><b>Disponível: </b><%= @disco.dados.count('-') %> bits</h3>
+        <div class="" align="right">
+          <h3><b>Disponível: </b><%= @disco.dados.count('-') %> bits</h3>
+        </div>
       </div>
     </div>
     <div class="pull-right">

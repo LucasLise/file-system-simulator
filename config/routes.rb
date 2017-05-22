@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :usuarios, only: [:new, :create]
-  resources :discos, only: [:show, :index] do
+  resources :discos, only: [:index] do
     member do
       get :contigua
       get :encadeada

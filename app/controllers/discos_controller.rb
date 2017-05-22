@@ -1,7 +1,7 @@
 class DiscosController < ApplicationController
-  before_action :set_disco, only: [:show, :gravar_bloco, :deletar_bloco, :restaurar, :defragmentar]
+  before_action :set_disco, only: [:contigua, :gravar_bloco, :deletar_bloco, :restaurar, :defragmentar]
 
-  def show
+  def contigua
     authorize @disco
   end
 
@@ -15,18 +15,18 @@ class DiscosController < ApplicationController
     tipo_bloco = params[:form][:tipo_bloco]
     @disco.update(dados: @disco.dados.gsub(tipo_bloco, '-'))
     @disco.informacoes_disco.find_by(tipo: tipo_bloco).destroy
-    redirect_to disco_path(@disco), method: :get, notice: 'Bloco deletado com sucesso'
+    redirect_to contigua_disco_path(@disco), method: :get, notice: 'Bloco deletado com sucesso'
   end
 
   def restaurar
     @disco.update(dados: '-' * Disco::TAMANHO_DISCO)
     @disco.informacoes_disco.destroy_all
-    redirect_to disco_path(@disco), method: :get, notice: 'Disco restaurado com sucesso'
+    redirect_to contigua_disco_path(@disco), method: :get, notice: 'Disco restaurado com sucesso'
   end
 
   def defragmentar
     @disco.update(dados: @disco.dados.chars.sort.reverse.join)
-    redirect_to disco_path(@disco), method: :get, notice: 'Disco defragmentado com sucesso'
+    redirect_to contigua_disco_path(@disco), method: :get, notice: 'Disco defragmentado com sucesso'
   end
 
   private
@@ -41,13 +41,13 @@ class DiscosController < ApplicationController
       dados_atualizados = @disco.dados.sub(str, subs)
 
       if @disco.dados == dados_atualizados || @disco.dados.include?(tipo_bloco)
-        redirect_to disco_path(@disco), alert: 'Não foi possivel armazenar'
+        redirect_to contigua_disco_path(@disco), alert: 'Não foi possivel armazenar'
       else
         @disco.update(dados: dados_atualizados)
         descricao = DiscoService.new(tipo_bloco, dados_atualizados).substring_positions
         cor_bloco = "%06x" % (rand * 0xffffff)
         InformacaoDisco.create(disco: @disco, tipo: tipo_bloco, descricao: descricao, cor_bloco: cor_bloco)
-        redirect_to disco_path(@disco), method: :get, notice: 'Armazenado com sucesso'
+        redirect_to contigua_disco_path(@disco), method: :get, notice: 'Armazenado com sucesso'
       end
     end
 end

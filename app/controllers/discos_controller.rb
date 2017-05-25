@@ -26,7 +26,7 @@ class DiscosController < ApplicationController
 
   def defragmentar
     @disco.update(dados: @disco.dados.chars.sort.reverse.join)
-    redirect_to contigua_disco_path(@disco), method: :get, notice: 'Disco defragmentado com sucesso'
+    redirect_to contigua_disco_path(@disco), method: :get, notice: 'Disco desfragmentado com sucesso'
   end
 
   private

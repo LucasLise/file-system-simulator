@@ -53,6 +53,11 @@
         </div>
       <% end %>
     </div>
+    <div align="center" class="row">
+      <div class="col-md-12">
+        <h1 id="disco-panel">Disco</h1><hr>
+      </div>
+    </div>
     <div class="row">
       <div class="col-md-6">
         <table class="table table-striped">
@@ -92,13 +97,13 @@
           </tbody>
         </table>
         <div class="" align="right">
-          <h3><b>Disponível: </b><%= @disco.dados.count('-') %> bits</h3>
+          <h3><b>Disponível: </b><%= @disco.dados.count('-') %> blocos</h3>
         </div>
       </div>
-    </div>
+    </div><hr>
     <div class="pull-right">
       <%= link_to '<i class="glyphicon glyphicon-wrench"></i> Restaurar'.html_safe, restaurar_disco_path(@disco), class: 'btn btn-info', method: :put %>
-      <%= link_to '<i class="glyphicon glyphicon-check"></i> Defragmentar'.html_safe, defragmentar_disco_path(@disco), class: 'btn btn-info', method: :put %>
+      <%= link_to '<i class="glyphicon glyphicon-check"></i> Desfragmentar'.html_safe, defragmentar_disco_path(@disco), class: 'btn btn-info', method: :put %>
     </div>
   </div>
 </div>

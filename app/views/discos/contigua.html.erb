@@ -1,3 +1,11 @@
+<div class="row">
+  <div class="col-md-12">
+    <%= button_tag(class: 'btn btn-block btn-info', id: 'button-informacoes') do %>
+      <i class="glyphicon glyphicon-chevron-down"></i> Ajuda
+    <% end %>
+  </div>
+</div>
+<%= render 'informacoes_alocacao_contigua' %>
 <div class="panel panel-primary">
   <div class="panel-heading">
     <div class="row">
@@ -18,7 +26,7 @@
         <div class="col-md-2">
           <%= f.input :tipo_bloco, collection: para_adicionar, default: 'A'%>
         </div>
-        <div class="col-md-2" style="padding: 22px 0 0 0">
+        <div class="col-md-2"  style="padding-top: 22px">
           <%= button_tag(type: "submit", class: "btn btn-primary") do %>
             <i class="glyphicon glyphicon-floppy-disk"></i> Gravar
           <% end %>
@@ -26,10 +34,10 @@
       <% end %>
       <% if disco_possui_dados? %>
         <%= simple_form_for :form, url: deletar_bloco_disco_path(@disco), method: :put do |f|%>
-          <div class="col-md-2" style="padding: 22px 22px 0 0">
-            <%= f.input :tipo_bloco, collection: para_deletar, label: false, include_blank: false %>
+          <div class="col-md-2" >
+            <%= f.input :tipo_bloco, collection: para_deletar, label: 'Deletar', include_blank: false %>
           </div>
-          <div class="col-md-2" style="padding: 22px 0 0 0">
+          <div class="col-md-2" style="padding-top: 22px">
             <%= button_tag(type: "submit", class: "btn btn-danger") do %>
               <i class="glyphicon glyphicon-trash"></i> Deletar
             <% end %>
@@ -37,20 +45,12 @@
         <% end %>
       <% end %>
     </div>
-    <div class="row"  style="padding: 0 20px">
+    <div class="row"  style="padding: 0 20px 0 20px">
       <% if notice.present? %>
-        <div class="panel panel-success">
-          <div class="panel-heading">
-          <h4 align="center"><b><%= notice %></b></h4>
-          </div>
-        </div>
+        <div class="alert alert-success" role="alert" align="center"><b><%= notice %></b></div>
       <% end %>
       <% if alert.present? %>
-        <div class="panel panel-danger">
-          <div class="panel-heading">
-            <h4 align="center"><b><%= alert %></b></h4>
-          </div>
-        </div>
+            <div class="alert alert-danger" role="alert" align="center"><b><%= alert %></b></div>
       <% end %>
     </div>
     <div align="center" class="row">

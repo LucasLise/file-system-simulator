@@ -1,0 +1,41 @@
+<div id="informacoes">
+    <div class="jumbotron">
+      <h2 align="center"><b>Alocação Contígua</b></h2><hr>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 align="center"><b>Características</b></h4>
+        </div>
+        <div class="panel-body">
+            <ul>
+              <li>Consiste em armazenar um conjunto de blocos sequencialmente dispostos</li>
+              <li>Não há um bloco vazio entre blocos do mesmo arquivo</li>
+              <li>Permite ao sistema localizar um arquivo através do endereço do primeiro bloco e da sua extensão em blocos</li>
+            </ul>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 align="center"><b>Vantagens</b></h4>
+        </div>
+        <div class="panel-body">
+          <ul>
+            <li>Simples de implementar</li>
+            <li>Fácil para monitorar os blocos de um arquivo, pois é somente identificar o endereço de disco do primeiro bloco e seu tamanho</li>
+            <li>Excelente desempenho, pois um arquivo inteiro pode ser lido em apenas uma operação</li>
+          </ul>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 align="center"><b>Desvantagens</b></h4>
+        </div>
+        <div class="panel-body">
+          <ul>
+            <li>Tamanho do arquivo deve ser conhecido no momento da gravação ou seria viável se o arquivo fosse gravado em uma só vez</li>
+            <li>Fragmentação do disco</li>
+            <li>Necessidade de desfragmentação periódica</li>
+        </ul>
+        </div>
+      </div>
+    </div>
+</div>

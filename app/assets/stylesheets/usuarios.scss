@@ -15,11 +15,6 @@
     color: #ffffff;
     border: 4px solid #ffffff;
   }
-
-  // .btn:hover {
-  //   background: #ffffff;
-  //   color: #3F5D7D;
-  // }
 }
 
 .btn {
@@ -28,13 +23,23 @@
   font-weight: bold;
 }
 
-.panel-danger > .panel-heading {
+.btn-danger {
+  background-color: #ed5565;
+  border-color: #ed5565;
+}
+
+.btn-info {
+  background: #5bc0de;
+  border-color: #5bc0de;
+}
+
+.alert-danger {
     background-color: #ed5565;
     border-color: #ed5565;
     color: white;
 }
 
-.panel-success > .panel-heading {
+.alert-success {
     background-color: #42c88a;
     border-color: #42c88a;
     color: white;
@@ -46,7 +51,6 @@
     background: #3F5D7D;
     border: 5px solid #ffffff;
     color: white;
-    // font-size: 25px;
     font-weight: bold;
     width: 100%;
     font-family: monospace;
@@ -105,4 +109,11 @@ hr {
     border-top: 1px solid  #428bca;
     margin: 1em 0;
     padding: 0;
+}
+
+#informacoes {
+  display: none;
+  .jumbotron {
+    background: #ffffff;
+  }
 }

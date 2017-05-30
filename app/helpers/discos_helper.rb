@@ -15,6 +15,6 @@ module DiscosHelper
   end
 
   def disco_possui_dados?
-    @disco.dados.count('-') < 10
+    @disco.dados.count('-') < Disco::TAMANHO_DISCO
   end
 end

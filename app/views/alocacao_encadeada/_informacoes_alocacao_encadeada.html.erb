@@ -1,0 +1,49 @@
+<div id="informacoes">
+  <div class="jumbotron">
+    <h2 align="center"><b>Alocação Contígua</b></h2><hr>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 align="center"><b>Características</b></h4>
+      </div>
+      <div class="panel-body">
+          <ul>
+            <li>Todos os blocos do disco podem ser utilizados</li>
+            <li>É suficiente armazenar o endereço do primeiro bloco para encontrar o restante, pois os ponteiros vão auxiliar</li>
+            <li>Espaços não serão desperdiçados em fragmentação de disco</li>
+          </ul>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 align="center"><b>Vantagens</b></h4>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <li>Todo o disco pode ser usado</li>
+          <li>Não há fragmentação externa</li>
+          <li>Tamanho dos arquivos podem ser flexíveis, podendo variar</li>
+        </ul>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 align="center"><b>Desvantagens</b></h4>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <li>Acesso aleatório é extremamente lento</li>
+          <li>Desperdiça espaço nos blocos com o armazenamento de ponteiros</li>
+          <li>Permite somente acesso sequencial aos blocos</li>
+        </ul>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 align="center"><b>Imagem Representativa</b></h4>
+      </div>
+      <div class="panel-body">
+        <div align="center"><%= image_tag "alocacao_encadeada.png" %></div>
+      </div>
+    </div>
+  </div>
+</div>

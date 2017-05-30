@@ -1,14 +1,8 @@
 class DiscoPolicy < ApplicationPolicy
-  def contigua?
-    possui_permissao?
+  def index?
+    true
   end
-
-  private
-
-  def possui_permissao?
-    user.disco.eql? record
-  end
-
+  
   class Scope < Scope
     def resolve
       scope

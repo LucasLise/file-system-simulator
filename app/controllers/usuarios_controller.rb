@@ -15,10 +15,7 @@ class UsuariosController < ApplicationController
         @usuario = Usuario.new(usuario_params)
         if @usuario.save
           session[:id_usuario] = @usuario.id
-          @disco = Disco.new
-          @disco.usuario = @usuario
-          @disco.dados = '-' * Disco::TAMANHO_DISCO
-          @disco.save
+          criar_discos
           format.html { redirect_to discos_path, notice: 'Autenticado'}
         else
           format.html { render :new }
@@ -29,6 +26,12 @@ class UsuariosController < ApplicationController
   end
 
   private
+
+    def criar_discos
+      @usuario.discos.create(dados: '-' * Disco::TAMANHO_DISCO, tipo_alocacao: 1)
+      @usuario.discos.create(dados: '-' * Disco::TAMANHO_DISCO, tipo_alocacao: 2)
+      @usuario.discos.create(dados: '-' * Disco::TAMANHO_DISCO, tipo_alocacao: 3)
+    end
 
     def usuario_params
       params.require(:usuario).permit(:nome)

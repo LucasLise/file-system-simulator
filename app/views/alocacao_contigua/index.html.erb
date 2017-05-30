@@ -1,0 +1,109 @@
+<div class="row">
+  <div class="col-md-12">
+    <%= button_tag(class: 'btn btn-block btn-info', id: 'button-informacoes') do %>
+      <i class="glyphicon glyphicon-chevron-down"></i> Ajuda
+    <% end %>
+  </div>
+</div>
+<%= render 'informacoes_alocacao_contigua' %>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-md-1">
+        <h1><%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> Voltar'.html_safe, discos_path, class: "btn btn-default", id: 'btn-voltar-panel' %></h1>
+      </div>
+      <div class="col-md-10" align="center">
+        <h1><b>Alocação Contígua</b></h1>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <%= simple_form_for :form, url: gravar_bloco_alocacao_contigua_index_path(@disco), method: :put do |f|%>
+        <div class="col-md-2">
+          <%= f.input :tamanho_bloco, collection: 1..Disco::TAMANHO_DISCO, default: 1%>
+        </div>
+        <div class="col-md-2">
+          <%= f.input :tipo_bloco, collection: para_adicionar, default: 'A'%>
+        </div>
+        <div class="col-md-2"  style="padding-top: 22px">
+          <%= button_tag(type: "submit", class: "btn btn-primary") do %>
+            <i class="glyphicon glyphicon-floppy-disk"></i> Gravar
+          <% end %>
+        </div>
+      <% end %>
+      <% if disco_possui_dados? %>
+        <%= simple_form_for :form, url: deletar_bloco_alocacao_contigua_index_path(@disco), method: :put do |f|%>
+          <div class="col-md-2" >
+            <%= f.input :tipo_bloco, collection: para_deletar, label: 'Deletar', include_blank: false %>
+          </div>
+          <div class="col-md-2" style="padding-top: 22px">
+            <%= button_tag(type: "submit", class: "btn btn-danger") do %>
+              <i class="glyphicon glyphicon-trash"></i> Deletar
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="row"  style="padding: 0 20px 0 20px">
+      <% if notice.present? %>
+        <div class="alert alert-success" role="alert" align="center"><b><%= notice %></b></div>
+      <% end %>
+      <% if alert.present? %>
+            <div class="alert alert-danger" role="alert" align="center"><b><%= alert %></b></div>
+      <% end %>
+    </div>
+    <div align="center" class="row">
+      <div class="col-md-12">
+        <h1 id="disco-panel">Disco</h1><hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Blocos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for i in 0...@disco.dados.size%>
+              <tr style="border-right: 10px solid #<%= @disco.informacoes_disco.find_by(tipo: @disco.dados[i]).try(:cor_bloco) %>">
+                <td><%= i %></td>
+                <td><%= @disco.dados[i] if  !@disco.dados[i].eql?('-') %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Tipo Bloco</th>
+              <th>Endereço Inicial</th>
+              <th>Tamanho</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @disco.informacoes_disco.each do |l| %>
+              <tr style="border-left: 10px solid #<%= l.cor_bloco %>">
+                <td><%= l.tipo %></td>
+                <td><%= @disco.dados.index l.tipo %></td>
+                <td><%= @disco.dados.count(l.tipo) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <div class="" align="right">
+          <h3><b>Disponível: </b><%= @disco.dados.count('-') %> blocos</h3>
+        </div>
+      </div>
+    </div><hr>
+    <div class="pull-right">
+      <%= link_to '<i class="glyphicon glyphicon-wrench"></i> Restaurar'.html_safe, restaurar_alocacao_contigua_index_path(@disco), class: 'btn btn-info', method: :put %>
+      <%= link_to '<i class="glyphicon glyphicon-check"></i> Desfragmentar'.html_safe, defragmentar_alocacao_contigua_index_path(@disco), class: 'btn btn-info', method: :put %>
+    </div>
+  </div>
+</div>

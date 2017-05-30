@@ -5,7 +5,7 @@
     <% end %>
   </div>
 </div>
-<%= render 'informacoes_alocacao_contigua' %>
+<%= render 'informacoes_alocacao_encadeada' %>
 <div class="panel panel-primary">
   <div class="panel-heading">
     <div class="row">
@@ -13,13 +13,13 @@
         <h1><%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> Voltar'.html_safe, discos_path, class: "btn btn-default", id: 'btn-voltar-panel' %></h1>
       </div>
       <div class="col-md-10" align="center">
-        <h1><b>Alocação Contígua</b></h1>
+        <h1><b>Alocação Encadeada</b></h1>
       </div>
     </div>
   </div>
   <div class="panel-body">
     <div class="row">
-      <%= simple_form_for :form, url: gravar_bloco_disco_path(@disco), method: :put do |f|%>
+      <%= simple_form_for :form, url: gravar_bloco_alocacao_encadeada_index_path(@disco), method: :put do |f|%>
         <div class="col-md-2">
           <%= f.input :tamanho_bloco, collection: 1..Disco::TAMANHO_DISCO, default: 1%>
         </div>
@@ -33,7 +33,7 @@
         </div>
       <% end %>
       <% if disco_possui_dados? %>
-        <%= simple_form_for :form, url: deletar_bloco_disco_path(@disco), method: :put do |f|%>
+        <%= simple_form_for :form, url: deletar_bloco_alocacao_encadeada_index_path(@disco), method: :put do |f|%>
           <div class="col-md-2" >
             <%= f.input :tipo_bloco, collection: para_deletar, label: 'Deletar', include_blank: false %>
           </div>
@@ -71,7 +71,7 @@
             <% for i in 0...@disco.dados.size%>
               <tr style="border-right: 10px solid #<%= @disco.informacoes_disco.find_by(tipo: @disco.dados[i]).try(:cor_bloco) %>">
                 <td><%= i %></td>
-                <td><%= @disco.dados[i] if  !@disco.dados[i].eql?('-') %></td>
+                <td><%= "#{@disco.dados[i]} | #{ Ponteiro.find_by(disco: @disco, posicao: i).try(:valor)}" if !@disco.dados[i].eql?('-') %></td>
               </tr>
             <% end %>
           </tbody>
@@ -83,7 +83,6 @@
             <tr>
               <th>Tipo Bloco</th>
               <th>Endereço Inicial</th>
-              <th>Tamanho</th>
             </tr>
           </thead>
           <tbody>
@@ -91,7 +90,6 @@
               <tr style="border-left: 10px solid #<%= l.cor_bloco %>">
                 <td><%= l.tipo %></td>
                 <td><%= @disco.dados.index l.tipo %></td>
-                <td><%= @disco.dados.count(l.tipo) %></td>
               </tr>
             <% end %>
           </tbody>
@@ -102,8 +100,7 @@
       </div>
     </div><hr>
     <div class="pull-right">
-      <%= link_to '<i class="glyphicon glyphicon-wrench"></i> Restaurar'.html_safe, restaurar_disco_path(@disco), class: 'btn btn-info', method: :put %>
-      <%= link_to '<i class="glyphicon glyphicon-check"></i> Desfragmentar'.html_safe, defragmentar_disco_path(@disco), class: 'btn btn-info', method: :put %>
+      <%= link_to '<i class="glyphicon glyphicon-wrench"></i> Restaurar'.html_safe, restaurar_alocacao_encadeada_index_path(@disco), class: 'btn btn-info', method: :put %>
     </div>
   </div>
 </div>

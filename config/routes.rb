@@ -2,13 +2,21 @@ Rails.application.routes.draw do
   resources :usuarios, only: [:new, :create]
   resources :discos, only: [:index] do
     member do
-      get :contigua
-      get :encadeada
-      get :encadeada_indice
-      put :deletar_bloco
-      put :restaurar
-      put :defragmentar
-      put :gravar_bloco
+      resources :alocacao_contigua, only: [:index] do
+        collection do
+          put :deletar_bloco
+          put :restaurar
+          put :defragmentar
+          put :gravar_bloco
+        end
+      end
+      resources :alocacao_encadeada, only: [:index] do
+        collection do
+          put :deletar_bloco
+          put :restaurar
+          put :gravar_bloco
+        end
+      end
     end
   end
 

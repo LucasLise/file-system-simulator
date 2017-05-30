@@ -1,5 +1,5 @@
 class Usuario < ApplicationRecord
-  has_one :disco
+  has_many :discos
 
   validates :nome, presence: true, length: { minimum: 5 }
 end

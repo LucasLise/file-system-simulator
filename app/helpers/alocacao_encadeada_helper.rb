@@ -1,0 +1,2 @@
+module AlocacaoEncadeadaHelper
+end

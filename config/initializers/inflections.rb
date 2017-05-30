@@ -15,4 +15,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'usuario', 'usuarios'
   inflect.irregular 'disco', 'discos'
   inflect.irregular 'informacao_disco', 'informacoes_disco'
+  inflect.irregular 'alocacao_contigua', 'alocacoes_contiguas'
+  inflect.irregular 'alocao_encadeada', 'alocacoes_encadeadas'
+  inflect.irregular 'ponteiro', 'ponteiros'
 end

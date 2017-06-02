@@ -17,6 +17,13 @@ Rails.application.routes.draw do
           put :gravar_bloco
         end
       end
+      resources :alocacao_indexada, only: [:index] do
+        collection do
+          put :deletar_bloco
+          put :restaurar
+          put :gravar_bloco
+        end
+      end
     end
   end
 

@@ -6,6 +6,7 @@ module DiscosHelper
   def para_deletar
      deletar =  @disco.dados.chars.uniq
      deletar.delete('-')
+     deletar.delete('!')
      deletar
   end
 

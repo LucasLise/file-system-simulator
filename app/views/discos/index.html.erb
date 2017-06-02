@@ -8,7 +8,7 @@
         <%= link_to 'Alocação Encadeada', alocacao_encadeada_index_path(id: Disco.find_by(usuario: Usuario.find(session[:id_usuario]), tipo_alocacao: 2).id), class: 'btn btn-default' %>
       </div>
       <div class="col-md-12 btn-tipo-alocacao">
-        <%= link_to 'Alocação Encadeada usando Índice', discos_path, class: 'btn btn-default' %>
+        <%= link_to 'Alocação Indexada', alocacao_indexada_index_path(id: Disco.find_by(usuario: Usuario.find(session[:id_usuario]), tipo_alocacao: 3).id), class: 'btn btn-default' %>
       </div>
     </div>
     <div class="row btn-voltar" align="rigth">

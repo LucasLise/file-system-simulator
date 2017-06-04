@@ -18,4 +18,12 @@ module DiscosHelper
   def disco_possui_dados?
     @disco.dados.count('-') < Disco::TAMANHO_DISCO
   end
+
+  def disponivel
+    @disco.dados.count('-')
+  end
+
+  def usado
+     Disco::TAMANHO_DISCO - @disco.dados.count('-')
+  end
 end

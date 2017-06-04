@@ -14,19 +14,17 @@ class AlocacaoContiguaController < ApplicationController
 
   def deletar_bloco
     tipo_bloco = params[:form][:tipo_bloco]
-    @disco.update(dados: @disco.dados.gsub(tipo_bloco, '-'))
-    @disco.informacoes_disco.find_by(tipo: tipo_bloco).try(:destroy)
+    AlocacaoContiguaService.new(@disco, tipo_bloco).atualizar_disco
     redirect_to alocacao_contigua_index_path(@disco), method: :get, notice: 'Bloco deletado com sucesso'
   end
 
   def restaurar
-    @disco.update(dados: '-' * Disco::TAMANHO_DISCO)
-    @disco.informacoes_disco.destroy_all
+    AlocacaoContiguaService.new(@disco).restaurar_disco
     redirect_to alocacao_contigua_index_path(@disco), method: :get, notice: 'Disco restaurado com sucesso'
   end
 
   def defragmentar
-    @disco.update(dados: @disco.dados.chars.sort.reverse.join)
+    AlocacaoContiguaService.new(@disco).defragmentar_disco
     redirect_to alocacao_contigua_index_path(@disco), method: :get, notice: 'Disco desfragmentado com sucesso'
   end
 

@@ -10,15 +10,29 @@ class AlocacaoContiguaService < ApplicationService
       { disco: @disco, message: { alert: 'Não foi possivel armazenar'} }
     else
       atualiza_disco(dados_atualizados)
-      inserir_informacoes_diretorio(dados_atualizados)
       { disco: @disco, message: {notice: 'Armazenado com sucesso'} }
     end
+  end
+
+  def atualizar_disco
+    @disco.update(dados: @disco.dados.gsub(@tipo_bloco, '-'))
+    @disco.informacoes_disco.find_by(tipo: @tipo_bloco).try(:destroy)
+  end
+
+  def restaurar_disco
+    @disco.update(dados: '-' * Disco::TAMANHO_DISCO)
+    @disco.informacoes_disco.destroy_all
+  end
+
+  def defragmentar_disco
+    @disco.update(dados: @disco.dados.chars.sort.reverse.join)
   end
 
   private
 
     def atualiza_disco(dados_atualizados)
       @disco.update(dados: dados_atualizados)
+      inserir_informacoes_diretorio(dados_atualizados)
     end
 
     def inserir_informacoes_diretorio(dados_atualizados)

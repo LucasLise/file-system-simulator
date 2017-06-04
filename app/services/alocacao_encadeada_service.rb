@@ -1,11 +1,17 @@
 class AlocacaoEncadeadaService < ApplicationService
 
+  def restaurar_disco
+    @disco.update(dados: '-' * Disco::TAMANHO_DISCO)
+    @disco.informacoes_disco.destroy_all
+    @disco.ponteiros.destroy_all
+  end
+
   def verificar_bloco
     str = '-' * @tamanho_bloco
     subs = @tipo_bloco * @tamanho_bloco
 
     if @disco.dados.count('-') < @tamanho_bloco
-      { disco: @disco, message: { alert: 'Não foi possivel armazenar'} }
+      { disco: @disco, message: {alert: 'Não foi possivel armazenar'} }
     else
       popular_disco_adiciona_ponteiros
       inserir_informacoes_diretorio
@@ -13,13 +19,23 @@ class AlocacaoEncadeadaService < ApplicationService
     end
   end
 
+  def atualiza_disco_e_ponteiros
+    atualiza_ponteiros
+    atualiza_disco
+  end
+
+  private
+
+  def atualiza_disco
+    @disco.update!(dados: @disco.dados.gsub(@tipo_bloco, '-'))
+    @disco.informacoes_disco.find_by(tipo: @tipo_bloco).try(:destroy)
+  end
+
   def atualiza_ponteiros
     posicoes = posicoes_substring(@tipo_bloco, @disco.dados).split ','
     posicoes.collect!(& :to_i)
     posicoes.collect!{ |i| @disco.ponteiros.find_by(posicao: i).try(:destroy) }
   end
-
-  private
 
   def inserir_informacoes_diretorio
     descricao = posicoes_substring(@tipo_bloco, @disco.dados)

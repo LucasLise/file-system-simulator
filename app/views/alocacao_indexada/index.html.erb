@@ -5,6 +5,7 @@
     <% end %>
   </div>
 </div>
+<%= render 'informacoes_alocacao_indexada' %>
 <div class="panel panel-primary">
   <div class="panel-heading">
     <div class="row">
@@ -52,13 +53,12 @@
             <div class="alert alert-danger" role="alert" align="center"><b><%= alert %></b></div>
       <% end %>
     </div>
-    <div align="center" class="row">
-      <div class="col-md-12">
-        <h1 id="disco-panel">Disco</h1><hr>
-      </div>
-    </div>
     <div class="row">
       <div class="col-md-6">
+        <div align="center">
+          <h1 id="disco-panel">Disco</h1>
+          <hr>
+        </div>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -81,6 +81,10 @@
         </table>
       </div>
       <div class="col-md-6">
+        <div align="center">
+          <h1 id="disco-panel">Diretório</h1>
+          <hr>
+        </div>
         <table class="table table-striped">
           <thead>
             <tr>

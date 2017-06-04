@@ -1,0 +1,48 @@
+<div id="informacoes">
+  <div class="jumbotron">
+    <h2 align="center"><b>Alocação Indexada</b></h2><hr>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 align="center"><b>Características</b></h4>
+      </div>
+      <div class="panel-body">
+          <ul>
+            <li>Cada palavra de ponteiro de cada bloco de disco é colocado em uma tabela ou em um bloco de índice na memória</li>
+            <li>A cada novo bloco ocupado, inclui-se um novo item na tabela ou bloco</li>
+            <li>Ao acessar o arquivo o bloco de índice é carregado na memória principal</li>
+          </ul>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 align="center"><b>Vantagens</b></h4>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <li>O bloco inteiro estará disponível para dados</li>
+          <li>Acesso aleatório é mais fácil</li>
+          <li>Não faz qualquer referência no disco, pois a cadeia para localização está toda presente na memória</li>
+          <li>É suficiente armazenar o endereço do bloco de índice para encontrar o restante, independente do tamanho do arquivo</li>
+        </ul>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 align="center"><b>Desvantagens</b></h4>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <li>Gasto excessivo de memória principal</li>
+        </ul>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 align="center"><b>Imagem Representativa</b></h4>
+      </div>
+      <div class="panel-body">
+        <div align="center"><%= image_tag "alocacao_indexada.png" %></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,4 @@
 class AlocacaoContiguaService < ApplicationService
-  def initialize(disco, tipo_bloco, tamanho_bloco)
-    @disco = disco
-    @tipo_bloco = tipo_bloco
-    @tamanho_bloco = tamanho_bloco
-  end
 
   def verificar_bloco
     str = '-' * @tamanho_bloco

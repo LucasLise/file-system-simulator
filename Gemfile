@@ -47,6 +47,8 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'factory_girl_rails', '~> 4.8'
+  gem 'rspec-rails', '~> 3.5'
 end
 
 group :development do

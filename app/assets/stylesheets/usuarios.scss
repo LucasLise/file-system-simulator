@@ -1,8 +1,8 @@
 .center {
   left: 50%;
-  position: fixed;
-  top: 50%;
-  transform: translate(-50%,-50%);
+  position: absolute;
+  top: 150%;
+  transform: translate(-50%, -50%);
 }
 
 .login {
@@ -31,6 +31,14 @@
 .btn-info {
   background: #5bc0de;
   border-color: #5bc0de;
+}
+
+
+
+.alert-info {
+  background-color: #5bc0de;
+  border-color: #5bc0de;
+  color: white;
 }
 
 .alert-danger {

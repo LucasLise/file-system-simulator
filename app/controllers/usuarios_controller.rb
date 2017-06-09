@@ -28,9 +28,9 @@ class UsuariosController < ApplicationController
   private
 
     def criar_discos
-      @usuario.discos.create(dados: '-' * Disco::TAMANHO_DISCO, tipo_alocacao: 1)
-      @usuario.discos.create(dados: '-' * Disco::TAMANHO_DISCO, tipo_alocacao: 2)
-      @usuario.discos.create(dados: '-' * Disco::TAMANHO_DISCO, tipo_alocacao: 3)
+      @usuario.discos.create(dados: '-' * Disco::TAMANHO_DISCO, tipo_alocacao: Disco::ALOCACAO_CONTIGUA)
+      @usuario.discos.create(dados: '-' * Disco::TAMANHO_DISCO, tipo_alocacao: Disco::ALOCACAO_ENCADEADA)
+      @usuario.discos.create(dados: '-' * Disco::TAMANHO_DISCO, tipo_alocacao: Disco::ALOCACAO_INDEXADA)
     end
 
     def usuario_params

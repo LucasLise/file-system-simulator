@@ -1,8 +1,6 @@
 class ApplicationPolicy
   attr_reader :user, :record
 
-  delegate :session, to: :context
-
   def initialize(user, record)
     @user = user
     @record = record

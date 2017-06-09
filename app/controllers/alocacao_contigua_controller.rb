@@ -32,5 +32,11 @@ class AlocacaoContiguaController < ApplicationController
 
     def set_disco
       @disco = Disco.find(params[:id])
+      if @disco.try(:tipo_alocacao).eql? Disco::ALOCACAO_CONTIGUA
+        @disco
+      else
+        redirect_to discos_path, alert: 'Selecione um disco'
+      end
+      @disco
     end
   end

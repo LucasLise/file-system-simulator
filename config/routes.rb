@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :usuarios, only: [:new, :create]
   resources :discos, only: [:index] do
     member do
       resources :alocacao_contigua, only: [:index] do
@@ -26,7 +25,7 @@ Rails.application.routes.draw do
       end
     end
   end
-
-  root 'usuarios#new'
+  
+  root 'discos#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

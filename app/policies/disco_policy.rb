@@ -1,6 +1,6 @@
 class DiscoPolicy < ApplicationPolicy
   def index?
-    true
+    @record.usuario.eql? @user
   end
 
   class Scope < Scope

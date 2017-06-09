@@ -27,6 +27,12 @@ class AlocacaoIndexadaController < ApplicationController
 
     def set_disco
       @disco = Disco.find(params[:id])
+      if @disco.try(:tipo_alocacao).eql? Disco::ALOCACAO_INDEXADA
+        @disco
+      else
+        redirect_to discos_path, alert: 'Selecione um disco'
+      end
+      @disco
     end
-    
+
 end

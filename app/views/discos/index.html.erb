@@ -1,20 +1,32 @@
-<div class="center">
-  <div class="animated fadeInLeft">
-    <div class="row">
-      <div class="col-md-12 btn-tipo-alocacao">
-        <%= link_to 'Alocação Contígua', alocacao_contigua_index_path(id: Disco.find_by(usuario: Usuario.find(session[:id_usuario]), tipo_alocacao: 1).id), class: 'btn btn-default' %>
-      </div>
-      <div class="col-md-12 btn-tipo-alocacao">
-        <%= link_to 'Alocação Encadeada', alocacao_encadeada_index_path(id: Disco.find_by(usuario: Usuario.find(session[:id_usuario]), tipo_alocacao: 2).id), class: 'btn btn-default' %>
-      </div>
-      <div class="col-md-12 btn-tipo-alocacao">
-        <%= link_to 'Alocação Indexada', alocacao_indexada_index_path(id: Disco.find_by(usuario: Usuario.find(session[:id_usuario]), tipo_alocacao: 3).id), class: 'btn btn-default' %>
-      </div>
+<section class="section" data-section-name="first">
+  <div id="type-preview">
+    <h1>File System</h1>
+    <p>Align nav links, forms, buttons, or text, using the .navbar-left or .navbar-right utility classes. Both classes will add a CSS float in the specified direction. For example, to align nav links, put them in a separate with the respective utility class applied.These classes are mixin-ed versions of .pull-left and .pull-right, but they're scoped to media queries for easier handling of navbar components across device sizes.</p>
+    <div align="center">
+      <button id="alternador" type="button" name="button" style="background: #3F5D7D; border-color: #3F5D7D">
+        <i class="glyphicon glyphicon-menu-down">&#xe259</i>
+      </button>
     </div>
-    <div class="row btn-voltar" align="rigth">
-      <div class="col-md-3">
-        <h1><%= link_to '<i class="glyphicon glyphicon-chevron-left"></i> Voltar'.html_safe, root_path, class: "btn btn-default" %></h1>
+  </div>
+</section>
+
+<section class="section" data-section-name="second">
+  <div class="center">
+    <div class="animated fadeInLeft">
+      <% if alert.present? %>
+        <div class="alert alert-info" role="alert" align="center"><b><%= alert %></b></div>
+      <% end %>
+      <div class="row">
+        <div class="col-md-12 btn-tipo-alocacao">
+          <%= link_to 'Alocação Contígua', alocacao_contigua_index_path(id: Disco.find_by(usuario: Usuario.find(session[:id_usuario]), tipo_alocacao: Disco::ALOCACAO_CONTIGUA).id), class: 'btn btn-default' %>
+        </div>
+        <div class="col-md-12 btn-tipo-alocacao">
+          <%= link_to 'Alocação Encadeada', alocacao_encadeada_index_path(id: Disco.find_by(usuario: Usuario.find(session[:id_usuario]), tipo_alocacao: Disco::ALOCACAO_ENCADEADA).id), class: 'btn btn-default' %>
+        </div>
+        <div class="col-md-12 btn-tipo-alocacao">
+          <%= link_to 'Alocação Indexada', alocacao_indexada_index_path(id: Disco.find_by(usuario: Usuario.find(session[:id_usuario]), tipo_alocacao: Disco::ALOCACAO_INDEXADA).id), class: 'btn btn-default' %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>

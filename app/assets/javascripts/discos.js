@@ -14,4 +14,14 @@ $(document).on("turbolinks:load", function(){
   $(".alert").fadeTo(2000, 500).slideUp(1000, function(){
       $(".alert").slideUp(1000);
   });
+
+  $('#alternador').click(function(){
+    $.scrollify.next();
+  });
+
+  $.scrollify({
+    section : ".section",
+    sectionName : "section-name"
+  });
+
 });

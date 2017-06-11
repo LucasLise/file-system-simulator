@@ -1,9 +1,14 @@
 <section class="section" data-section-name="first">
-  <div id="type-preview">
-    <h1>File System</h1>
-    <p>Align nav links, forms, buttons, or text, using the .navbar-left or .navbar-right utility classes. Both classes will add a CSS float in the specified direction. For example, to align nav links, put them in a separate with the respective utility class applied.These classes are mixin-ed versions of .pull-left and .pull-right, but they're scoped to media queries for easier handling of navbar components across device sizes.</p>
+  <div class="pagina-introducao">
+    <h1>Sistemas de Arquivos</h1>
+    <blockquote cite="http://">
+      <p>Os arquivos são gerenciados pelo sistema operacional. O modo como eles são estruturados, nomeados, acessados, utilizados, protegidos e implementados constitui temas importantes no projeto de um sistema operacional. Como um todo, a parte do sistema operacional que lida com arquivos é conhecida como <strong>sistema de arquivos</strong>.</p>
+      <div align="right">
+        <cite>Andrew S. Tanenbaum & Albert S. Woodhull, 2000</cite>
+      </div>
+    </blockquote>
     <div align="center">
-      <button id="alternador" type="button" name="button" style="background: #3F5D7D; border-color: #3F5D7D">
+      <button id="alternador" type="button" name="button">
         <i class="glyphicon glyphicon-menu-down">&#xe259</i>
       </button>
     </div>
@@ -11,8 +16,23 @@
 </section>
 
 <section class="section" data-section-name="second">
+  <div class="pagina-introducao">
+    <h1>Implementação de Arquivos</h1>
+    <blockquote cite="http://">
+      <p>A questão mais importante na implementação de armazenamento de arquivos talvez seja a manutenção do controle de quais blocos de disco estão relacionados a quais arquivos. São usados vários métodos em diferentes sistemas operacionais.</p>
+      <div align="right">
+        <cite>Andrew S. Tanenbaum, 2004</cite>
+      </div>
+    </blockquote>
+  </div>
+</section>
+
+<section class="section" data-section-name="third">
+  <div class="pagina-introducao">
+    <h3 align="center">Aprenda como funciona o armazenamento de arquivos!</h3>
+  </div>
   <div class="center">
-    <div class="animated fadeInLeft">
+    <div class="">
       <% if alert.present? %>
         <div class="alert alert-info" role="alert" align="center"><b><%= alert %></b></div>
       <% end %>

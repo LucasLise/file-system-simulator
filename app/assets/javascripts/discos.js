@@ -15,13 +15,17 @@ $(document).on("turbolinks:load", function(){
       $(".alert").slideUp(1000);
   });
 
-  $('#alternador').click(function(){
-    $.scrollify.next();
-  });
+  if ($('.section').length) {
+    $('#alternador').click(function(){
+      $.scrollify.next();
+    });
 
-  $.scrollify({
-    section : ".section",
-    sectionName : "section-name"
-  });
+    $.scrollify({
+      section : ".section",
+      sectionName : "section-name"
+    });
+  } else {
+    $.scrollify.destroy();
+  }
 
 });

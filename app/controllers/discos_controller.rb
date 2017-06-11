@@ -1,6 +1,8 @@
 class DiscosController < ApplicationController
   def index
-    inicializar_usuario
+    if !session[:id_usuario]
+      inicializar_usuario
+    end
   end
 
   private

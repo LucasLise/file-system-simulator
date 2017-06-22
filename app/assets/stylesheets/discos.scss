@@ -31,7 +31,7 @@
   }
 }
 
-#alternador {
+.alternador {
   background: #3F5D7D;
   border: none;
 
@@ -52,7 +52,42 @@
   }
 }
 
-#alternador {
+.alternador {
   animation: blink 1.5s step-start 0s infinite;
   -webkit-animation: blink 1.5s step-start 0s infinite;
+}
+
+
+
+#button-artigo
+{
+  position: fixed;
+  top: 30%;
+  right: 0px;
+  width: 40px;
+
+  h5 {
+    color: #fff;
+    -moz-transform:rotate(-90deg);
+    -ms-transform:rotate(-90deg);
+    -o-transform:rotate(-90deg);
+    -webkit-transform:rotate(-90deg);
+
+    a {
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 30px;
+      font-family: 'Cormorant Garamond';
+      letter-spacing: 5px;
+      font-weight: bold;
+      background-color: #ed5565;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    // a:hover {
+    //   background-color:#fff;
+    //   color: #ed5565;
+    // }
+  }
 }

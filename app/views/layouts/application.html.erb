@@ -8,8 +8,13 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body style="background:  #3F5D7D ">
+  <body>
     <div class="container">
+      <div id="button-artigo">
+        <h5>
+          <%= link_to "Artigo", asset_path("SistemasOperacionais.pdf"), target: :_blank %>
+        </h5 >
+      </div>
       <%= yield %>
     </div>
   </body>

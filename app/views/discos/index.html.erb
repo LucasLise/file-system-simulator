@@ -1,4 +1,4 @@
-<section class="section" data-section-name="first">
+<section class="section">
   <div class="pagina-introducao">
     <h1>Sistemas de Arquivos</h1>
     <blockquote cite="http://">
@@ -8,14 +8,14 @@
       </div>
     </blockquote>
     <div align="center">
-      <button id="alternador" type="button" name="button">
+      <button class="alternador" type="button" name="button">
         <i class="glyphicon glyphicon-menu-down">&#xe259</i>
       </button>
     </div>
   </div>
 </section>
 
-<section class="section" data-section-name="second">
+<section class="section">
   <div class="pagina-introducao">
     <h1>Implementação de Arquivos</h1>
     <blockquote cite="http://">
@@ -24,10 +24,15 @@
         <cite>Andrew S. Tanenbaum, 2004</cite>
       </div>
     </blockquote>
+    <div align="center">
+      <button class="alternador" type="button" name="button">
+        <i class="glyphicon glyphicon-menu-down">&#xe259</i>
+      </button>
+    </div>
   </div>
 </section>
 
-<section class="section" data-section-name="third">
+<section class="section">
   <div class="pagina-introducao">
     <h3 align="center">Aprenda como funciona o armazenamento de arquivos !</h3>
   </div>
@@ -37,14 +42,14 @@
         <div class="alert alert-info" role="alert" align="center"><b><%= alert %></b></div>
       <% end %>
       <div class="row">
-        <div class="col-md-12 btn-tipo-alocacao">
-          <%= link_to 'Alocação Contígua', alocacao_contigua_index_path(id: Disco.find_by(usuario: Usuario.find(session[:id_usuario]), tipo_alocacao: Disco::ALOCACAO_CONTIGUA).id), class: 'btn btn-default' %>
+        <div class="col-md-12 btn-padrao">
+          <%= link_to 'Alocação Contígua', alocacao_contigua_index_path(id: Disco.find_by(usuario: Usuario.find(session[:id_usuario]), tipo_alocacao: Disco::ALOCACAO_CONTIGUA).id), class: 'btn' %>
         </div>
-        <div class="col-md-12 btn-tipo-alocacao">
-          <%= link_to 'Alocação Encadeada', alocacao_encadeada_index_path(id: Disco.find_by(usuario: Usuario.find(session[:id_usuario]), tipo_alocacao: Disco::ALOCACAO_ENCADEADA).id), class: 'btn btn-default' %>
+        <div class="col-md-12 btn-padrao">
+          <%= link_to 'Alocação Encadeada', alocacao_encadeada_index_path(id: Disco.find_by(usuario: Usuario.find(session[:id_usuario]), tipo_alocacao: Disco::ALOCACAO_ENCADEADA).id), class: 'btn' %>
         </div>
-        <div class="col-md-12 btn-tipo-alocacao">
-          <%= link_to 'Alocação Indexada', alocacao_indexada_index_path(id: Disco.find_by(usuario: Usuario.find(session[:id_usuario]), tipo_alocacao: Disco::ALOCACAO_INDEXADA).id), class: 'btn btn-default' %>
+        <div class="col-md-12 btn-padrao">
+          <%= link_to 'Alocação Indexada', alocacao_indexada_index_path(id: Disco.find_by(usuario: Usuario.find(session[:id_usuario]), tipo_alocacao: Disco::ALOCACAO_INDEXADA).id), class: 'btn' %>
         </div>
       </div>
     </div>

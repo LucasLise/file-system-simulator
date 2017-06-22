@@ -16,14 +16,16 @@ $(document).on("turbolinks:load", function(){
   });
 
   if ($('.section').length) {
-    $('#alternador').click(function(){
+    $('.alternador').click(function(){
       $.scrollify.next();
     });
 
-    $.scrollify({
-      section : ".section",
-      sectionName : "section-name"
-    });
+    // $.scrollify.previous();
+    // $.scrollify.instantNext();
+    // $.scrollify.disable();
+    // $.scrollify.enable();
+
+    $.scrollify({});
   } else {
     $.scrollify.destroy();
   }

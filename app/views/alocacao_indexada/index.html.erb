@@ -59,26 +59,11 @@
           <h1 id="disco-panel">Disco</h1>
           <hr>
         </div>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Blocos</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% for i in 0...@disco.dados.size%>
-              <tr style="border-right: 10px solid #<%= @disco.informacoes_disco.find_by(tipo: @disco.dados[i]).try(:cor_bloco) %>">
-                <td><%= i %></td>
-                <% if @disco.dados[i] == '!' %>
-                  <td><%= "#{@disco.ponteiros.where(posicao: i).pluck(:valor).join ','}" %></td>
-                <% else %>
-                  <td><%= @disco.dados[i] if !@disco.dados[i].eql?('-') %></td>
-                <% end %>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+        <div class="col-md-2">
+          <%= select_tag "vizualizacao", raw("<option>Gráfico</option><option>Tabela</option>"), class: "btn btn-xs btn-primary" %>
+        </div>
+        <%= render "grafico_disco" %>
+        <%= render "tabela_disco" %>
       </div>
       <div class="col-md-6">
         <div align="center">

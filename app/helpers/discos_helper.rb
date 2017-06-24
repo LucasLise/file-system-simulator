@@ -30,11 +30,13 @@ module DiscosHelper
   def data(dados)
     x = dados.chars.chunk{|e| e}.map{|e| e[1].join }.compact
 
-    cores = {"Disponível" => "#F8F8FF"}
+    cores = {"Disponível" => "#F8F8FF", "Bloco de Índice" => "black"}
 
     disco = Array(  x.map do |v|
-                      if v[0] == "-"
+                      if v[0] == '-'
                         ["Disponível", v.size]
+                      elsif v[0] == '!'
+                        ["Bloco de Índice", 1]
                       else
                        cores[v[0]] =  "##{@disco.informacoes_disco.find_by(tipo: v[0]).cor_bloco}"
                        [v[0], v.size]

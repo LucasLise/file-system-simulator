@@ -60,7 +60,7 @@
           <hr>
         </div>
         <div class="col-md-2">
-          <%= select_tag "vizualizacao", raw("<option>Gráfico</option><option>Tabela</option>"), class: "btn btn-xs btn-primary" %>
+          <%= select_tag "visualizacao", raw("<option value='tabela'>Tabela</option><option value='grafico'>Gráfico</option>"), class: "btn btn-xs btn-primary" %>
         </div>
         <%= render "grafico_disco" %>
         <%= render "tabela_disco" %>

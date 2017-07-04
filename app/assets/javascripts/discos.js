@@ -19,15 +19,12 @@ $(document).on("turbolinks:load", function(){
     $('.alternador').click(function(){
       $.scrollify.next();
     });
-
-    // $.scrollify.previous();
-    // $.scrollify.instantNext();
-    // $.scrollify.disable();
-    // $.scrollify.enable();
-
     $.scrollify({});
   } else {
     $.scrollify.destroy();
   }
 
+  $("#btn-voltar-table").click(function(){
+    $.scrollify.move("#3");
+  });
 });
